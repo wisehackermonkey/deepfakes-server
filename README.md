@@ -66,3 +66,33 @@ http://localhost:5000/generate?image=https://raw.githubusercontent.com/wisehacke
 
 
 ```
+
+
+
+### Next steps
+-x fix the docker container to include tk 
+- openfaas-ify the cpu only version
+- deploy to openfaas 
+
+
+
+### build second lay in docker container
+```
+docker build . -t wisehackermonkey/deepfake-build-2
+```
+
+### run second lay in of docker container
+```
+docker run --rm -it -v ${PWD}:/home/app wisehackermonkey/deepfake-build-2
+```
+
+
+
+### view docker image layerhistory
+```
+docker history wisehackermonkey/deepfake-build-1
+```
+```
+view command history and size
+docker history --no-trunc --format "{{.Size}} | {{.CreatedBy}}" wisehackermonkey/deepfake-build-1
+```

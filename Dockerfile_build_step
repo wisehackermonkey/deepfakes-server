@@ -1,0 +1,9 @@
+FROM wisehackermonkey/deepfake-build-1:latest
+
+#fix time zone issue on install where it asks for user input
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
+RUN apt update && \
+    apt install python3-tk -y
