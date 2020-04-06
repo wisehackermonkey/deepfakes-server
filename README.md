@@ -35,3 +35,34 @@ curl -X POST localhost:5000/generate?image=ron_swanson_v1.png&video=face_01.mp4
 ```
 git lfs track "*.tar"
 ```
+
+### test with network files
+```
+Required request parameters
+image=<URL to png or jpg> and video=<URL to mp4 or mov>
+```
+##### example
+
+```
+localhost:5000/generate?image=http://127.0.0.1:8887/Stills/john_snow.png&video=http://127.0.0.1:8887/ExportedVideo/oran.mp4
+```
+
+### generate deep fake givin image of circie from game of thrones
+##### got punch in to browser
+```
+http://localhost:5000/generate?image=https://d4mucfpksywv.cloudfront.net/research-covers/glow/demo/media/cersei.png&video=http://127.0.0.1:8887/ExportedVideo/oran.mp4
+
+http://localhost:5000/generate?image=https://d4mucfpksywv.cloudfront.net/research-covers/glow/demo/media/cersei.png&video=http://127.0.0.1:8887/ExportedVideo/oran.mp4
+
+
+Image Link:
+https://raw.githubusercontent.com/wisehackermonkey/deepfake-demo-files/master/gameofthrones-01.png
+Video Link:
+https://github.com/wisehackermonkey/deepfake-demo-files/blob/master/01.mp4?raw=true
+
+URL
+http://localhost:5000/generate?image=https://raw.githubusercontent.com/wisehackermonkey/deepfake-demo-files/master/gameofthrones-01.png&video=https://github.com/wisehackermonkey/deepfake-demo-files/blob/master/04.mp4?raw=true
+
+
+
+```

@@ -76,15 +76,21 @@ def download_video():
 
 @app.route('/generate', methods=['GET', 'POST'])
 def generate_video():
-    if request.method == 'POST':
+    if request.method == 'POST' or request.method == 'GET' :
         print("post")
         image = request.args.get('image', '')
         video = request.args.get('video', '')
-
-        print(image)
-        print(video)
-        deepfake(image,video)
-        return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
-    else:
-        print("get")
-        return "get request made Please use POST instead"
+        if image and video:
+            print(image)
+            print(video)
+            deepfake(image,video)
+            return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
+        else:
+            return """
+            <h4>Missing request parameters<br>
+            image=<br>
+            and<br>
+            video=<br>
+            example<br>
+            localhost:5000/generate?image=http://127.0.0.1:8887/Stills/john_snow.png&video=http://127.0.0.1:8887/ExportedVideo/oran.mp4
+            </h4>"""
