@@ -3,14 +3,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from skimage.transform import resize
-from IPython.display import HTML
+# from IPython.display import HTML
 import warnings
 
-from flask import Flask
-from flask import request
-from flask import send_file
+# from flask import Flask
+# from flask import request
+# from flask import send_file
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
 warnings.filterwarnings("ignore")
 
@@ -38,7 +38,7 @@ def display(source, driving, generated=None):
 print("Loading Machine Learning Model")
 from demo import load_checkpoints
 generator, kp_detector = load_checkpoints(config_path='config/vox-256.yaml', 
-                            checkpoint_path='trained_model/vox-cpk.pth.tar')
+                            checkpoint_path='trained_model/vox-cpk.pth.tar',cpu=True)
 
 print("loading models stuff")
 from demo import make_animation
@@ -55,42 +55,43 @@ def deepfake(image,video):
     source_image = resize(source_image, (256, 256))[..., :3]
     driving_video = [resize(frame, (256, 256))[..., :3] for frame in driving_video]
 
-    predictions = make_animation(source_image, driving_video, generator, kp_detector, relative=True)
+    predictions = make_animation(source_image, driving_video, generator, kp_detector, relative=True,cpu=True)
 
     #save resulting video
     imageio.mimsave('./generated/generated.mp4', [img_as_ubyte(frame) for frame in predictions])
     #video can be downloaded from /generated folder
+image_path = "./demo/ron_swanson_v1.png"
+video_path = "./demo/face_01.mp4"
+deepfake(image_path,video_path)
+# print("started flask server")
+# @app.route('/')
+# def index():
+#     return 'Deepfake api, <br>endpoints <br>/generate <br> /download to get video '
 
+# @app.route("/download")
+# def download_video():
+#     try:
+#         return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
+#     except Exception as e:
+#         return str(e)
 
-print("started flask server")
-@app.route('/')
-def index():
-    return 'Deepfake api, <br>endpoints <br>/generate <br> /download to get video '
-
-@app.route("/download")
-def download_video():
-    try:
-        return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
-    except Exception as e:
-        return str(e)
-
-@app.route('/generate', methods=['GET', 'POST'])
-def generate_video():
-    if request.method == 'POST' or request.method == 'GET' :
-        print("post")
-        image = request.args.get('image', '')
-        video = request.args.get('video', '')
-        if image and video:
-            print(image)
-            print(video)
-            deepfake(image,video)
-            return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
-        else:
-            return """
-            <h4>Missing request parameters<br>
-            image=<br>
-            and<br>
-            video=<br>
-            example<br>
-            localhost:5000/generate?image=http://127.0.0.1:8887/Stills/john_snow.png&video=http://127.0.0.1:8887/ExportedVideo/oran.mp4
-            </h4>"""
+# @app.route('/generate', methods=['GET', 'POST'])
+# def generate_video():
+#     if request.method == 'POST' or request.method == 'GET' :
+#         print("post")
+#         image = request.args.get('image', '')
+#         video = request.args.get('video', '')
+#         if image and video:
+#             print(image)
+#             print(video)
+#             deepfake(image,video)
+#             return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
+#         else:
+#             return """
+#             <h4>Missing request parameters<br>
+#             image=<br>
+#             and<br>
+#             video=<br>
+#             example<br>
+#             localhost:5000/generate?image=http://127.0.0.1:8887/Stills/john_snow.png&video=http://127.0.0.1:8887/ExportedVideo/oran.mp4
+#             </h4>"""
