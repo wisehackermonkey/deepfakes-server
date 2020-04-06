@@ -28,7 +28,7 @@ python -m flask run
 image_path = "http://127.0.0.1:8887/Stills/john_snow.png"
 video_path = "http://127.0.0.1:8887/ExportedVideo/orans_cropped_fotage_v1.mp4"
 
-curl -X POST localhost:5000/login?image=demo_files/ron_swanson_v1.png&video=demo_files/face_01.mp4
+curl -X POST localhost:5000/generate?image=ron_swanson_v1.png&video=face_01.mp4
 ```
 
 ### adding git lfs to large file

@@ -8,6 +8,8 @@ import warnings
 
 from flask import Flask
 from flask import request
+from flask import send_file
+
 app = Flask(__name__)
 
 warnings.filterwarnings("ignore")
@@ -36,9 +38,9 @@ def display(source, driving, generated=None):
 print("Loading Machine Learning Model")
 from demo import load_checkpoints
 generator, kp_detector = load_checkpoints(config_path='config/vox-256.yaml', 
-                            checkpoint_path='vox-cpk.pth.tar')
+                            checkpoint_path='trained_model/vox-cpk.pth.tar')
 
-
+print("loading models stuff")
 from demo import make_animation
 from skimage import img_as_ubyte
 
@@ -60,14 +62,17 @@ def deepfake(image,video):
     #video can be downloaded from /generated folder
 
 
-print("starting flask server")
+print("started flask server")
 @app.route('/')
 def index():
-    return 'Deepfake api, endpoints /generate '
+    return 'Deepfake api, <br>endpoints <br>/generate <br> /download to get video '
 
 @app.route("/download")
 def download_video():
-    return "works"
+    try:
+        return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
+    except Exception as e:
+        return str(e)
 
 @app.route('/generate', methods=['GET', 'POST'])
 def generate_video():
@@ -79,7 +84,7 @@ def generate_video():
         print(image)
         print(video)
         deepfake(image,video)
-        return "post"
+        return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
     else:
         print("get")
-        return "get"
+        return "get request made Please use POST instead"
