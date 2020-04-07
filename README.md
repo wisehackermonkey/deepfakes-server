@@ -166,3 +166,19 @@ python3 index.py
 
 
 https://blog.alexellis.io/openfaas-storage-for-your-functions/
+
+
+## Build the webserver
+```
+docker build . -t simple-webserver-v1 
+```
+## Run the webserver
+```
+docker run -it -p 8000:80 --rm simple-webserver-v1:latest
+```
+
+### for development
+docker run -it -p 8000:80 --rm -v ${PWD}/src:/usr/share/nginx/html simple-webserver-v1:latest
+
+## visit
+> localhost:8000
