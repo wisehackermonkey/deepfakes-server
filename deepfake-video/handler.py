@@ -37,9 +37,7 @@ def deepfake(image,video):
 
     #save resulting video
     imageio.mimsave('/home/app/function/generated.mp4', [img_as_ubyte(frame) for frame in predictions])
-#     #video can be downloaded from /generated folder
-# image_path = str(Path.cwd()/"deepfake-video"/"ron_swanson_v1.png")
-# video_path = "./demo/face_01.mp4"
+
 print(".")
 
 def get_temp_file():
@@ -47,16 +45,11 @@ def get_temp_file():
     return uuid_value
 def handle(req):
     req = json.loads(req)
-    host = "64.227.84.118:9000"
-    minio_access_key = "USQcf6bPKr"
-    minio_secret_key = "M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y"
-    # mc = Minio(os.environ['minio_hostname'],
-    #               access_key=os.environ['minio_access_key'],
-    #               secret_key=os.environ['minio_secret_key'],
-    #               secure=False)
-    mc = Minio(host,access_key=minio_access_key,
-                  secret_key=minio_secret_key,
+    mc = Minio(os.environ['minio_hostname'],
+                  access_key=os.environ['minio_access_key'],
+                  secret_key=os.environ['minio_secret_key'],
                   secure=False)
+
     print(".")
     if req["video"] != "" and req["image"] != "":
         print("X")

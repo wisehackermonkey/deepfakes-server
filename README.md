@@ -163,3 +163,6 @@ faas-cli build ; faas-cli deploy;docker run -it --rm  deepfake-video:latest /bin
 {"video":"https://cdn-b-east.streamable.com/video/mp4/xqhkzi.mp4?token=gWNtD3dDJuz5tlccgOVfWQ&expires=1586247120","image":"https://i.imgur.com/N0OfBon.png"}
 nano function/handler.py
 python3 index.py
+
+
+https://blog.alexellis.io/openfaas-storage-for-your-functions/
