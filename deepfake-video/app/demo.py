@@ -10,11 +10,11 @@ import numpy as np
 from skimage.transform import resize
 from skimage import img_as_ubyte
 import torch
-from sync_batchnorm import DataParallelWithCallback
+from function.sync_batchnorm import DataParallelWithCallback
 
-from modules.generator import OcclusionAwareGenerator
-from modules.keypoint_detector import KPDetector
-from animate import normalize_kp
+from function.modules.generator import OcclusionAwareGenerator
+from function.modules.keypoint_detector import KPDetector
+from function.animate import normalize_kp
 from scipy.spatial import ConvexHull
 
 

@@ -116,3 +116,50 @@ faas-cli build -f ./deepfake-video
 ```
 docker run -it --name samba -p 139:139 -p 445:445  -v ${PWD}:/mount  -d dperson/samba -p
 ```
+
+
+pip install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+### example string
+```
+{"video":"URL","image":"URL"}
+
+```
+##### Example from local server
+```
+{"video":"http://127.0.0.1:8887/ExportedVideo/oran.mp4","image":"http://127.0.0.1:8887/Stills/john_snow.png"}
+http://127.0.0.1:8887/ExportedVideo/oran.mp4
+http://127.0.0.1:8887/Stills/john_snow.png
+```
+
+
+#### example test run with full image
+```
+docker run -it --rm   -v ${PWD}:/home/app/test wisehackermonkey/deepfake-video:latest /bin/sh
+```
+MINIO_HOSTNAME
+MINIO_ACCESS_KEY
+MINIO_SECRET_KEY
+
+
+
+export minio_hostname="64.227.84.118:9000"
+export minio_access_key="USQcf6bPKr"
+export minio_secret_key="M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y"
+
+import imageio;source_image = imageio.mimread("http://64.227.84.118:9000/maylogs/oran.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=USQcf6bPKr%2F20200407%2F%2Fs3%2Faws4_request&X-Amz-Date=20200407T032614Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5e9855c7c5d80e53ed5a1dff273d64c2680328cf697c3d53ff2411b299653657");print(source_image)
+
+
+import imageio;source_image = imageio.mimread("http://127.0.0.1:8887/ExportedVideo/oran.mp4");print(source_image)
+
+
+https://i.imgur.com/N0OfBon.png
+https://streamable.com/s/xqhkzi/yrcyge
+
+{"video":"https://streamable.com/s/xqhkzi/yrcyge","image":"https://i.imgur.com/N0OfBon.png"}
+
+faas-cli build ; faas-cli deploy;docker run -it --rm  deepfake-video:latest /bin/sh
+
+
+{"video":"https://cdn-b-east.streamable.com/video/mp4/xqhkzi.mp4?token=gWNtD3dDJuz5tlccgOVfWQ&expires=1586247120","image":"https://i.imgur.com/N0OfBon.png"}
+nano function/handler.py
+python3 index.py
