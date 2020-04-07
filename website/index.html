@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- created by oran collins github.com/wisehackermonkey oranbusiness@gmail.com  20200407 -->
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js"></script>
+
+    <title>DeepFake Generator</title>
+  </head>
+  <body>
+      
+    <div class="bg">
+      <h1>DeepFake<br />Generator</h1>
+
+      <form action="/function/deepfake-video" method="post">
+        <div class="center-align-box">
+          <p>Image Link</p>
+        </div>
+
+        <div class="center-align-box">
+          <textarea
+            placeholder="https://example.com/faceimage.png"
+            cols="50"
+          ></textarea>
+        </div>
+
+        <div class="center-align-box">
+          <p>Video Link</p>
+        </div>
+
+        <div class="center-align-box">
+          <input type="textarea" name="" id="" />
+        </div>
+
+        <div class="center-align-box">
+          <textarea
+            placeholder="https://example.com/facevideo.mp4"
+            cols="50"
+          ></textarea>
+        </div>
+
+        <div class="center-align-box">
+          <input type="button" value="Generate" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

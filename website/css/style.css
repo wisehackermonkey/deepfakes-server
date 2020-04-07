@@ -1,0 +1,25 @@
+h1 {
+    color: red;
+    text-align: center;
+}
+
+.bg {
+    flex: 1;
+    size: inherit;
+    background-color: blue;
+    height: 800px;
+    width: auto;
+    /* height: calc(100% - 50px); */
+}
+
+p {
+    text-align: center;
+    font-size: 20px;
+}
+
+.center-align-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
