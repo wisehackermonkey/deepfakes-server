@@ -86,7 +86,10 @@ docker build . -t wisehackermonkey/deepfake-build-2
 docker run --rm -it -v ${PWD}:/home/app wisehackermonkey/deepfake-build-2
 ```
 
-
+### run final lay in of docker container
+```
+docker run --rm -it -v ${PWD}:/home/app wisehackermonkey/deepfake-video:latest
+```
 
 ### view docker image layerhistory
 ```
@@ -95,4 +98,21 @@ docker history wisehackermonkey/deepfake-build-1
 ```
 view command history and size
 docker history --no-trunc --format "{{.Size}} | {{.CreatedBy}}" wisehackermonkey/deepfake-build-1
+```
+
+
+### open-faas generate 
+```
+faas-cli new --lang=python3-debian deepfake-video
+```
+
+### open-faas build 
+```
+faas-cli build -f ./deepfake-video
+```
+
+
+### setup simple samba share
+```
+docker run -it --name samba -p 139:139 -p 445:445  -v ${PWD}:/mount  -d dperson/samba -p
 ```

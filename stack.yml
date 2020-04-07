@@ -1,0 +1,15 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  deepfake-video:
+    lang: python3-debian
+    handler: ./deepfake-video
+    image: wisehackermonkey/deepfake-video:latest
+    environment:
+      minio_hostname: "64.227.84.118:9000"
+      minio_access_key: "USQcf6bPKr"
+      minio_secret_key: "M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y"
+      write_debug: true
+
