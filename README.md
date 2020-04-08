@@ -210,3 +210,21 @@ docker stack services deepfake-video
 ```
 docker stack rm  deepfake-video
 ```
+
+### minio run
+```
+docker run -d --restart always -p 9000:9000 --name mino_bucket -e "MINIO_ACCESS_KEY=USQcf6bPKr" -e "MINIO_SECRET_KEY=M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y" -v $(pwd)/db:/data minio/minio server /data
+
+```
+
+
+
+todo add minio to docker stack
+todo make depoyable via docker stack
+todo get deepfake running on digitalocean
+
+
+
+how to use custom template for open faas
+
+

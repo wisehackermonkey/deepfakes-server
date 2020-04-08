@@ -123,6 +123,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-!template/python3-debian/*
-template
+
+#used to track one of my monkey patches
+template/*
+!template/python3-debian
 build
