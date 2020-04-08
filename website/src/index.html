@@ -3,6 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favacon stuff -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon-16x16.png"
+    />
+    <link rel="manifest" href="img/site.webmanifest" />
+
     <!-- created by oran collins github.com/wisehackermonkey oranbusiness@gmail.com  20200407 -->
 
     <link rel="stylesheet" href="css/style.css" />
@@ -11,7 +31,6 @@
     <title>DeepFake Generator</title>
   </head>
   <body>
-      
     <div class="bg">
       <h1>DeepFake<br />Generator</h1>
 
@@ -20,29 +39,28 @@
           <p>Image Link</p>
         </div>
 
-        <div class="center-align-box">
-          <textarea
+        <div class="center-align-box" id="image_text_box">
+          <input
+            id="image_text_box_field"
+            type="text"
             placeholder="https://example.com/faceimage.png"
-            cols="50"
-          ></textarea>
+          />
         </div>
 
         <div class="center-align-box">
           <p>Video Link</p>
         </div>
 
-        <div class="center-align-box">
-          <input type="textarea" name="" id="" />
-        </div>
 
-        <div class="center-align-box">
-          <textarea
+        <div class="center-align-box" id="video_text_box">
+          <input
+            id="video_text_box_field"
+            type="text"
             placeholder="https://example.com/facevideo.mp4"
-            cols="50"
-          ></textarea>
+          />
         </div>
 
-        <div class="center-align-box">
+        <div class="center-align-box" id="GenerateButton">
           <input type="button" value="Generate" />
         </div>
       </form>

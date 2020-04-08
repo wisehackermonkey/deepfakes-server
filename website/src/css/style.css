@@ -6,7 +6,7 @@ h1 {
 .bg {
     flex: 1;
     size: inherit;
-    background-color: blue;
+    background-color: ghostwhite;
     height: 800px;
     width: auto;
     /* height: calc(100% - 50px); */
