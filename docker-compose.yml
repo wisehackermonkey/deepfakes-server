@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    # docker run -it -p 8000:80 --rm -v ${PWD}/src:/usr/share/nginx/html simple-webserver-v1:latest 
+    web:
+        image: wisehackermonkey/simple-webserver-v1:latest
+        build: ./webserver
+        ports: 
+            - "8000:80"
+        volumes: 
+            - "${PWD}/webserver/src:/usr/share/nginx/html"
+    # docker run -it --rm -p 10900:8080 redocly/cors-anywhere:latest    
+    cors:
+        image: redocly/cors-anywhere:latest
+        ports:
+            - "10900:8080"
+    # minio:

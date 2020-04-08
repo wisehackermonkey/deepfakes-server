@@ -182,3 +182,31 @@ docker run -it -p 8000:80 --rm -v ${PWD}/src:/usr/share/nginx/html simple-webser
 
 ## visit
 > localhost:8000
+
+
+### fix cors issues by making a revser peroxy that returns all requests with cors disabled
+
+docker run -it --rm -p 10900:8080 redocly/cors-anywhere:latest
+
+
+
+
+### how to run stack 
+##### for more info: [Tutorial Here](https://docs.docker.com/engine/swarm/stack-deploy/)
+```
+locally only
+docker-compose up -d
+
+Across swarm
+docker stack deploy --compose-file .\docker-compose.yml deepfake-video
+```
+
+### view status
+```
+docker stack services deepfake-video
+```
+
+### Take down stack
+```
+docker stack rm  deepfake-video
+```
