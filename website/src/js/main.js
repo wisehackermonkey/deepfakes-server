@@ -3,11 +3,14 @@
 // github.com/wisehackermonkey
 // oranbusiness@gmail.com
 // 20200407
-const CORS_REVERSE_PROXY = "http://localhost:10900/"
+
 const SERVER_URL = "http://requestbin.net/r/1383i921" //"http://64.227.84.118:8080/function/figlet"
 
 const TEST_IMAGE_URL = "https://i.imgur.com/N0OfBon.png";
 const TEST_VIDEO_URL = "https://i.imgur.com/N0OfBon.png";
+
+const HOST_NAME = window.location.hostname;
+const CORS_REVERSE_PROXY = `http://${HOST_NAME}:10900/`
 
 let send_deepfake = async (json_data) => {
   try {
@@ -22,7 +25,7 @@ let send_deepfake = async (json_data) => {
       mode: "cors",
       headers: {
         "Content-Type": "text/plain", //"application/json",
-        "Access-Control-Allow-Origin": "http://64.227.84.118:8080",
+        "Access-Control-Allow-Origin": `http://${HOST_NAME}:8080`,
         origin: "*",
       },
       body: JSON.stringify(json_data),
