@@ -6,7 +6,7 @@ functions:
   deepfake-video:
     lang: python3-debian
     handler: ./deepfake-video
-    image: deepfake-video:latest
+    image: wisehackermonkey/deepfake-video:latest
     environment:
       read_timeout: 1800s
       write_timeout: 1800s

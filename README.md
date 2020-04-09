@@ -69,12 +69,6 @@ http://localhost:5000/generate?image=https://raw.githubusercontent.com/wisehacke
 
 
 
-### Next steps
--x fix the docker container to include tk 
-- openfaas-ify the cpu only version
-- deploy to openfaas 
-
-
 
 ### build second lay in docker container
 ```
@@ -198,7 +192,7 @@ locally only
 docker-compose up -d
 
 Across swarm
-docker stack deploy --compose-file .\docker-compose.yml deepfake-video
+docker stack deploy --compose-file docker-compose.yml deepfake-video
 ```
 
 ### view status
@@ -219,9 +213,21 @@ docker run -d --restart always -p 9000:9000 --name mino_bucket -e "MINIO_ACCESS_
 
 
 
-todo add minio to docker stack
-todo make depoyable via docker stack
-todo get deepfake running on digitalocean
+
+### Next steps
+- x fix the docker container to include tk 
+- x openfaas-ify the cpu only version
+- x deploy to openfaas 
+- x pull 
+- build deepfake image on digitalocean
+- test endpoint postman
+- add/fix minio to docker compose file
+- make depoyable via docker stack
+
+-----
+#### streach goals
+- html test if connected to backend
+
 
 
 
