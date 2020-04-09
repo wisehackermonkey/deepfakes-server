@@ -154,7 +154,7 @@ https://streamable.com/s/xqhkzi/yrcyge
 faas-cli build ; faas-cli deploy;docker run -it --rm  deepfake-video:latest /bin/sh
 
 
-{"video":"https://cdn-b-east.streamable.com/video/mp4/xqhkzi.mp4?token=gWNtD3dDJuz5tlccgOVfWQ&expires=1586247120","image":"https://i.imgur.com/N0OfBon.png"}
+{"video":"https://cdn-b-east.streamable.com/video/mp4/xqhkzi.mp4?token=vBfDOn4mQ4MoUbSMftzMxw&expires=1586415240","image":"https://i.imgur.com/N0OfBon.png"}
 nano function/handler.py
 python3 index.py
 
