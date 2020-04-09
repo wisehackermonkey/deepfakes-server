@@ -7,12 +7,15 @@ services:
         build: ./website
         ports: 
             - "8123:80"
+        volumes: 
+            - "./website/src:/usr/share/nginx/html"
+        #uncomment if on windows
         # volumes: 
             # - "${PWD}/website/src:/usr/share/nginx/html"
     # docker run -it --rm -p 10900:8080 redocly/cors-anywhere:latest    
-    # cors:
-    #     image: redocly/cors-anywhere:latest
-    #     ports:
-    #         - "10900:8080"
+    cors:
+        image: redocly/cors-anywhere:latest
+        ports:
+            - "10900:8080"
     #docker run -d --restart always -p 9000:9000 --name mino_bucket -e "MINIO_ACCESS_KEY=USQcf6bPKr" -e "MINIO_SECRET_KEY=M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y" -v $(pwd)/db:/data minio/minio server /data     
     # minio:
