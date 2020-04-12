@@ -8,7 +8,7 @@ services:
         ports: 
             - "5000:5000"
         volumes:
-            - "$(PWD)/public:/home/app/public/" 
+            - "$(pwd)/public:/home/app/public/" 
             #uncomment if on windows
             # - "${PWD}/public:/home/app/public/"
     # docker run -it -p 8000:80 --rm -v ${PWD}/src:/usr/share/nginx/html simple-webserver-v1:latest 
