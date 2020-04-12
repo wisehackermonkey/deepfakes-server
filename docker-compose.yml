@@ -3,12 +3,14 @@ version: "3"
 services:
     # docker run -it --rm -v ${PWD}/public:/home/app/public/ -p 5000:5000 flask-deepfake:latest
     flask: 
-        image: flask-deepfake:latest
-        build: ./server
+        image: wisehackermonkey/flask-deepfake:latest
+        # build: ./server
         ports: 
             - "5000:5000"
-        volumes: 
-            - "${PWD}/public:/home/app/public/"
+        volumes:
+            - "$(PWD)/public:/home/app/public/" 
+            #uncomment if on windows
+            # - "${PWD}/public:/home/app/public/"
     # docker run -it -p 8000:80 --rm -v ${PWD}/src:/usr/share/nginx/html simple-webserver-v1:latest 
     web:
         image: wisehackermonkey/simple-webserver-v1:latest
@@ -30,9 +32,9 @@ services:
     share:
         image: trinitronx/python-simplehttpserver
         volumes: 
-            # - "$(pwd)/public:/var/www:ro"
+            - "$(pwd)/public:/var/www:ro"
             #uncomment if on windows powershsell
-            - "${PWD}/public:/var/www:ro"
+            # - "${PWD}/public:/var/www:ro"
 
         ports: 
             - "1337:8080"
@@ -45,9 +47,9 @@ services:
         ports: 
             - "9000:9000"
         volumes: 
-            # - "$(pwd)/db:/data"
+            - "$(pwd)/db:/data"
             #uncomment if on windows powershsell
-            - "${PWD}/db:/data"
+            # - "${PWD}/db:/data"
         command: server  /data
         environment:
             - MINIO_ACCESS_KEY=USQcf6bPKr

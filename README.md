@@ -255,3 +255,18 @@ test string
 ```
 5:39 minutes
 ```
+
+
+### build flask deepfake server
+```
+docker build ./server -t flask-deepfake
+
+DEBUG
+docker run -it --rm -v ${PWD}/public:/home/app/function/public/ -p 5000:5000 flask-deepfake:latest 
+```
+
+## deploy
+```
+>docker-compose build
+>docker-compose up -d
+```
