@@ -48,7 +48,7 @@ def deepfake(image,video,temp_file_name):
     predictions = make_animation(source_image, driving_video, generator, kp_detector, relative=True,cpu=True)
 
     #save resulting video
-    imageio.mimsave('/home/app/function/public/'+ temp_file_name+".mp4", [img_as_ubyte(frame) for frame in predictions])
+    imageio.mimsave('/home/app/public/'+ temp_file_name+".mp4", [img_as_ubyte(frame) for frame in predictions])
 
 print(".")
 
@@ -113,6 +113,6 @@ def generate_video():
         print("X")
         temp_file_name = get_temp_file() + ".mp4"
         deepfake(image_arg,video_arg,temp_file_name)
-        return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
+        return send_file('/home/app/public/'+ temp_file_name+".mp4", attachment_filename="deepfake_01.mp4")
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

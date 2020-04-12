@@ -12,8 +12,9 @@ COPY ./requirements.txt /home/app/requirements.txt
 RUN pip3 install -r requirements.txt
 
 COPY ./function /home/app/function
+# COPY ./public /home/app/public
 
-RUN mkdir -p /home/app/function/public
+# RUN mkdir -p /home/app/public
 
 ENTRYPOINT [ "python3" ]
 
