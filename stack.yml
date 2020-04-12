@@ -10,7 +10,7 @@ functions:
     environment:
       read_timeout: 1800s
       write_timeout: 1800s
-      minio_hostname: "64.227.84.118:9000"
+      minio_hostname: "127.0.0.1:9000"
       minio_access_key: "USQcf6bPKr"
       minio_secret_key: "M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y"
       write_debug: true
