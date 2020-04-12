@@ -7,6 +7,11 @@ functions:
     lang: python3-debian
     handler: ./deepfake-video
     image: wisehackermonkey/deepfake-video:latest
+    volume:
+      # - "$(pwd)/public:/home/app/function/public/"
+
+      #uncomment if windows
+      - "${pwd}/public:/home/app/function/public/"
     environment:
       read_timeout: 1800s
       write_timeout: 1800s

@@ -231,13 +231,27 @@ docker run -d --restart always -p 9000:9000 --name mino_bucket -e "MINIO_ACCESS_
 
 
 
-how to use custom template for open faas
 
 
-If there is issues with GIT LFS run this command
-
+### If there is issues with GIT LFS run this command
+```
 INSTALL GIT LFS
 >curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 >sudo apt-get install git-lfs && git lfs install
 >git lfs pull
 >git lfs checkout
+```
+-----------
+
+### Test string for deepfake openfaas function
+```
+test string
+{"video":"http://157.245.162.16:1337/face_01.mp4","image":"http://157.245.162.16:1337/ron_swanson_v1.png"}
+```
+
+
+
+### Run time for generating a deepfake of length 8 seconds
+```
+5:39 minutes
+```

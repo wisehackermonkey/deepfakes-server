@@ -1,6 +1,12 @@
+from flask import Flask
+from flask import request
+from flask import send_file
+
+app = Flask(__name__)
+
 from pathlib import Path
 import sys, os, uuid ,json
-from minio import Minio
+# from minio import Minio
 
 
 import imageio
@@ -65,4 +71,48 @@ def handle(req):
     return temp_file_name
 
 print(".")
-# handle('{"video":"http://157.245.162.16:1337/face_01.mp4","image":"http://157.245.162.16:1337/ron_swanson_v1.png"}')
+
+print("started flask server")
+@app.route('/')
+def index():
+    return 'Deepfake api, <br>endpoints <br>/generate <br> /download to get video '
+
+# @app.route("/download")
+# def download_video():
+#     try:
+#         return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
+#     except Exception as e:
+#         return str(e)
+
+@app.route('/generate', methods=['GET', 'POST'])
+def generate_video():
+    if request.method == 'POST' or request.method == 'GET' :
+        print("post")
+        image = request.args.get('image', '')
+        video = request.args.get('video', '')
+        if (not image) and (not video):
+            return """
+            <h4>Missing request parameters<br>
+            image=<br>
+            and<br>
+            video=<br>
+            example<br>
+            localhost:5000/generate?image=http://127.0.0.1:8887/Stills/john_snow.png&video=http://127.0.0.1:8887/ExportedVideo/oran.mp4
+            </h4>"""
+        print(image)
+        print(video)
+        
+        req = request.get_json()
+        print(request.args)
+        print(".")
+        image_arg = request.args.get('image')
+        video_arg = request.args.get('video')
+        if image_arg == "" and video_arg == "":
+            return 'please enter video and image link  {"video":"URL","image":"URL"}'
+        
+        print("X")
+        temp_file_name = get_temp_file() + ".mp4"
+        deepfake(image_arg,video_arg,temp_file_name)
+        return send_file("./generated/generated.mp4", attachment_filename="deepfake_01.mp4")
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
