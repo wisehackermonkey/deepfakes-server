@@ -4,11 +4,11 @@ services:
     # docker run -it -p 8000:80 --rm -v ${PWD}/src:/usr/share/nginx/html simple-webserver-v1:latest 
     web:
         image: wisehackermonkey/simple-webserver-v1:latest
-        build: ./website
+        # build: ./website
         ports: 
             - "8123:80"
-        volumes: 
-            - "./website/src:/usr/share/nginx/html"
+        # volumes: 
+            # - "$(pwd)/src:/usr/share/nginx/html"
         #uncomment if on windows
         # volumes: 
             # - "${PWD}/website/src:/usr/share/nginx/html"
@@ -17,5 +17,30 @@ services:
         image: redocly/cors-anywhere:latest
         ports:
             - "10900:8080"
-    #docker run -d --restart always -p 9000:9000 --name mino_bucket -e "MINIO_ACCESS_KEY=USQcf6bPKr" -e "MINIO_SECRET_KEY=M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y" -v $(pwd)/db:/data minio/minio server /data     
-    # minio:
+    
+            # sudo docker run -d -v $(pwd):/var/www:ro -p 1337:8080 trinitronx/python-simplehttpserver
+    share:
+        image: trinitronx/python-simplehttpserver
+        volumes: 
+            # - "$(pwd)/public:/var/www:ro"
+            #uncomment if on windows powershsell
+            - "${PWD}/public:/var/www:ro"
+
+        ports: 
+            - "1337:8080"
+
+    #docker run -d --restart always -p 9000:9000 --name mino_bucket -e "MINIO_ACCESS_KEY=USQcf6bPKr" -e "MINIO_SECRET_KEY=M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y" -v $(pwd)/db:/data minio/minio server /data   
+    # docker run -it -p 9000:9000  -e "MINIO_ACCESS_KEY=USQcf6bPKr" -e "MINIO_SECRET_KEY=M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y" -v $(pwd)/db:/data minio/minio server /data   
+    # docker run -it  minio/minio  /bin/sh
+    minio:
+        image: minio/minio
+        ports: 
+            - "9000:9000"
+        volumes: 
+            # - "$(pwd)/db:/data"
+            #uncomment if on windows powershsell
+            - "${PWD}/db:/data"
+        command: server  /data
+        environment:
+            - MINIO_ACCESS_KEY=USQcf6bPKr
+            - MINIO_SECRET_KEY=M6c6nNmrYj3FK3vCDLQqdjZXdgH5RJVgqZhGsH9Y
