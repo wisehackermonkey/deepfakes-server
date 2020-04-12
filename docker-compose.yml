@@ -8,7 +8,7 @@ services:
         ports: 
             - "5000:5000"
         volumes:
-            - "$(pwd)/public:/home/app/public/" 
+            - "./public:/home/app/public/" 
             #uncomment if on windows
             # - "${PWD}/public:/home/app/public/"
     # docker run -it -p 8000:80 --rm -v ${PWD}/src:/usr/share/nginx/html simple-webserver-v1:latest 
@@ -32,7 +32,7 @@ services:
     share:
         image: trinitronx/python-simplehttpserver
         volumes: 
-            - "$(pwd)/public:/var/www:ro"
+            - "./public:/var/www:ro"
             #uncomment if on windows powershsell
             # - "${PWD}/public:/var/www:ro"
 
@@ -47,7 +47,7 @@ services:
         ports: 
             - "9000:9000"
         volumes: 
-            - "$(pwd)/db:/data"
+            - "./db:/data"
             #uncomment if on windows powershsell
             # - "${PWD}/db:/data"
         command: server  /data
