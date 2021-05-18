@@ -264,6 +264,10 @@ docker build ./server -t flask-deepfake
 DEBUG
 docker run -it --rm -v ${PWD}/public:/home/app/function/public/ -p 5000:5000 flask-deepfake:latest 
 ```
+### devolpment/debug http server
+```
+docker run -it -p 80:80  -v ${PWD}/website/src:/usr/share/nginx/html   matriphe/alpine-nginx:html
+```
 
 ## deploy
 ```
